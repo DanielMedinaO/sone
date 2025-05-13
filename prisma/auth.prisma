@@ -1,0 +1,12 @@
+model UserAuth {
+  user_id   String   @id @db.Uuid
+  password  String   @db.VarChar(20)
+
+  updatedBy    String?  @map("updated_by")
+  updatedAt    DateTime @map("updated_at")
+  createdBy    String?  @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("user_auth") // Name table
+  @@schema("auth") // Name schema
+}

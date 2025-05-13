@@ -6,6 +6,7 @@ export class HealthController {
 
   @Get()
   getHello(): string {
-    return 'Hola Soy Sone';
+    const message = String(process.env.DATABASE_URL).toUpperCase();
+    return `${message}`;
   }
 }
