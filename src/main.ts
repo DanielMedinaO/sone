@@ -5,7 +5,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { description, title, version } from './shared/const/swagger';
+import { description, title, version } from './shared/const/swagger-summary';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
