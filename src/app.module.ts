@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { HealthController } from './interfaces/http/controllers/health.controller';
+import { HealthController } from './web/controllers/health.controller';
 import { ConfigModule } from '@nestjs/config';
 import * as fs from 'fs';
 

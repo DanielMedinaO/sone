@@ -9,4 +9,3 @@ datasource db {
   url      = env("DATABASE_URL")
   schemas  = ["auth", "people"]
 }
-

@@ -1,34 +1,73 @@
-// @ts-check
-import eslint from '@eslint/js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
+import prettierPlugin from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
+import sortClassMembers from 'eslint-plugin-sort-class-members';
+import unusedImports from 'eslint-plugin-unused-imports';
 
-export default tseslint.config(
+export default defineConfig([
   {
-    ignores: ['eslint.config.mjs'],
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    plugins: { js },
+    extends: ['js/recommended'],
   },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  eslintPluginPrettierRecommended,
   {
+    files: ['**/*.js'],
+    languageOptions: { sourceType: 'commonjs' },
+  },
+  {
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    languageOptions: { globals: globals.browser },
+  },
+  ...tseslint.configs.recommended,
+  {
+    files: ['**/*.ts'],
     languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
-      sourceType: 'commonjs',
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
+      parser: tseslint.parser,
     },
-  },
-  {
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      'sort-class-members': sortClassMembers,
+      'unused-imports': unusedImports,
+      prettier: prettierPlugin,
+    },
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-floating-promises': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'warn'
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'class',
+          format: ['PascalCase'],
+        },
+      ],
+      'sort-class-members/sort-class-members': [
+        'error',
+        {
+          order: [
+            '[static-properties]',
+            '[properties]',
+            '[static-methods]',
+            '[conventional-private-properties]',
+            'constructor',
+            '[methods]',
+            '[conventional-private-methods]',
+          ],
+          accessorPairPositioning: 'getThenSet',
+        },
+      ],
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
+      'prettier/prettier': 'error',
     },
+    extends: [prettierConfig],
   },
-);
+]);
