@@ -67,6 +67,7 @@ export default defineConfig([
         },
       ],
       'prettier/prettier': 'error',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
     extends: [prettierConfig],
   },
