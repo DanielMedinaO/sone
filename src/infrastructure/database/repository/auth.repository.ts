@@ -10,6 +10,6 @@ export default class AuthRepository
   implements Partial<IAuthRepository>
 {
   constructor(protected prisma: PrismaService) {
-    super(prisma?.auth);
+    super(prisma?.userAuth);
   }
 }
