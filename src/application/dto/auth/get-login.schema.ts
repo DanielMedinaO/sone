@@ -9,7 +9,7 @@ export class GetLoginDto extends IntersectionType(PasswordDto) {
   })
   @IsString()
   @ValidateIf((o) => !o.email)
-  phone: string;
+  phone?: string;
 
   @ApiProperty({
     description: 'Email del cliente',
@@ -17,5 +17,5 @@ export class GetLoginDto extends IntersectionType(PasswordDto) {
   })
   @IsEmail()
   @ValidateIf((o) => !o.phone)
-  email: string;
+  email?: string;
 }

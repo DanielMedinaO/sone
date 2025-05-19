@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { GetLoginDto } from 'src/application/dto/auth/get-login.schema';
-import { GetLoginUseCase } from 'src/application/use-case/auth/get-login.usecase';
+import { GetLoginUseCase } from 'src/application/use-case/auth/get-login/get-login.usecase';
 
 @ApiTags('Auth')
 @Controller('auth')

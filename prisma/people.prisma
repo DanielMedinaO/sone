@@ -1,11 +1,15 @@
 model user {
-  id        String    @id @default(uuid())
+  // Attributes
+  id        String    @id @default(uuid()) @db.Uuid
   name      String    @db.VarChar(50)
   surnames  String    @db.VarChar(100)
   birthdate DateTime
   phone     String    @unique @db.VarChar(15)
   email     String?   @unique @db.VarChar(320)
   status    String    @default("ACTIVE")
+  // Relationships
+  userAuth  userAuth?
+  // Base attributes
   updatedBy String?   @map("updated_by")
   updatedAt DateTime? @map("updated_at")
   createdBy String?   @map("created_by")

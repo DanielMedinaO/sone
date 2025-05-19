@@ -10,6 +10,10 @@ export abstract class BaseRepositoy<T> implements Partial<IBaseRepository<T>> {
     return this.client.findUnique({ where });
   }
 
+  find(where: object, include: object): Promise<T> {
+    return this.client.findFirst({ where, include });
+  }
+
   findAll(): Promise<T[]> {
     return this.client.findMany();
   }

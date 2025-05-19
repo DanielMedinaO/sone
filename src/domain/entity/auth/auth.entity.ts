@@ -1,2 +1,5 @@
 import { userAuth } from '@prisma/client';
-export type UserAuth = userAuth;
+import { User } from '../base/user.entity';
+export type UserAuth = userAuth & {
+  user: User;
+};

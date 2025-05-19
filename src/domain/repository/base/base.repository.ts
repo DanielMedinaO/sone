@@ -3,7 +3,7 @@ export abstract class IBaseRepository<T> {
   abstract delete(where: any | string): Promise<void>;
   abstract findAll(): Promise<T[]>;
   abstract findOneBy(options: object | object[]): Promise<T>;
-  abstract find(where: any, relations?: string[]): Promise<T>;
+  abstract find(where: any, relations?: any): Promise<T>;
   abstract findMany(
     where: any,
     relations: string[],

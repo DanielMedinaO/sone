@@ -1,7 +1,10 @@
 model userAuth {
-  user_id  String @id @default(uuid()) @db.Uuid
-  password String
-
+  // Attributes
+  user_id   String    @id @default(uuid()) @db.Uuid
+  password  String
+  // Relationships
+  user      user      @relation(fields: [user_id], references: [id])
+  // Base attributes
   updatedBy String?   @map("updated_by")
   updatedAt DateTime? @map("updated_at")
   createdBy String?   @map("created_by")

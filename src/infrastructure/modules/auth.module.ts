@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SavePasswordUseCase } from 'src/application/use-case/auth/save-password.usecase';
-import { GetLoginUseCase } from 'src/application/use-case/auth/get-login.usecase';
+import { GetLoginUseCase } from 'src/application/use-case/auth/get-login/get-login.usecase';
 import { RepositoryModule } from './repository.module';
 import { AuthController } from 'src/web/auth/auth.controller';
 import { JwtModule } from '@nestjs/jwt';
