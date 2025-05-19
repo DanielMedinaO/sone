@@ -1,6 +1,6 @@
 model userAuth {
   user_id  String @id @default(uuid()) @db.Uuid
-  password String @db.VarChar(20)
+  password String
 
   updatedBy String?   @map("updated_by")
   updatedAt DateTime? @map("updated_at")

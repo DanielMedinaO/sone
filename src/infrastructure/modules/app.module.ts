@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as fs from 'fs';
-import { CustomerController } from 'src/web/controllers/customer/customer.controller';
 import { HealthController } from 'src/web/controllers/health/health.controller';
-import { RepositoryModule } from './repository.module';
-import { CustomerCreationUseCase } from 'src/application/use-case/customer/customer-creation.usecase';
+import { CommonModule } from './common.module';
+import { AuthModule } from './auth.module';
 
 function getEnvFilePath(): string {
   const nodeEnv = process.env.NODE_ENV || 'dev';
@@ -18,9 +17,9 @@ function getEnvFilePath(): string {
       envFilePath: getEnvFilePath(),
       isGlobal: true,
     }),
-    RepositoryModule,
+    AuthModule,
+    CommonModule,
   ],
-  providers: [CustomerCreationUseCase],
-  controllers: [HealthController, CustomerController],
+  controllers: [HealthController],
 })
 export class AppModule {}

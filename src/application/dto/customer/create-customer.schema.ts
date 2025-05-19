@@ -7,9 +7,10 @@ import {
   IsDateString,
 } from 'class-validator';
 
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, IntersectionType } from '@nestjs/swagger';
+import { PasswordDto } from '../base/password.schema';
 
-export class CreateCustomerDto {
+export class CreateCustomerDto extends IntersectionType(PasswordDto) {
   @ApiProperty({
     description: 'Nombre del cliente',
     example: 'Daniel',
@@ -49,13 +50,4 @@ export class CreateCustomerDto {
   })
   @IsString()
   phone: string;
-
-  @ApiProperty({
-    description: 'Contraseña',
-    example: 'password123',
-  })
-  @IsString()
-  @MinLength(4)
-  @MaxLength(20)
-  password: string;
 }
