@@ -1,9 +1,9 @@
 import { Module, Scope } from '@nestjs/common';
-import UserRepository from '../database/repository/auth.repository';
 import IUserRepository from '../../domain/repository/base/user.repository';
 import { PrismaModule } from './prisma.module';
-import IAuthRepository from 'src/domain/repository/auth/auth.repository';
-import AuthRepository from '../database/repository/auth.repository';
+import IUserAuthRepository from 'src/domain/repository/auth/auth.repository';
+import UserAuthRepository from '../database/repository/auth.repository';
+import UserRepository from '../database/repository/user.repository';
 
 @Module({
   imports: [PrismaModule],
@@ -14,11 +14,11 @@ import AuthRepository from '../database/repository/auth.repository';
       scope: Scope.REQUEST,
     },
     {
-      provide: IAuthRepository,
-      useClass: AuthRepository,
+      provide: IUserAuthRepository,
+      useClass: UserAuthRepository,
       scope: Scope.REQUEST,
     },
   ],
-  exports: [IUserRepository, IAuthRepository],
+  exports: [IUserRepository, IUserAuthRepository],
 })
 export class RepositoryModule {}

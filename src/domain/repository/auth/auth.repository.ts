@@ -1,4 +1,4 @@
 import { IBaseRepository } from '../base/base.repository';
-import { Auth } from 'src/domain/entity/auth/auth.entity';
+import { UserAuth } from 'src/domain/entity/auth/auth.entity';
 
-export default abstract class IAuthRepository extends IBaseRepository<Auth> {}
+export default abstract class IUserAuthRepository extends IBaseRepository<UserAuth> {}
