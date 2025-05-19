@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateCustomerDto } from 'src/application/dto/customer/create-customer.schema';
 import { CustomerMapper } from 'src/application/mappers/customer.mapper';
 import { Customer } from 'src/domain/entity/customer/customer.entity';
-import IAuthRepository from 'src/domain/repository/auth/auth.repository';
+import IAuthRepository from 'src/domain/repository/auth/user-auth.repository';
 import IUserRepository from 'src/domain/repository/base/user.repository';
 
 @Injectable()
