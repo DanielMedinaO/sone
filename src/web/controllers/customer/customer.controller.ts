@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateCustomerDto } from 'src/application/dto/customer/create-customer.schema';
 import { CustomerCreationUseCase } from 'src/application/use-case/customer/customer-creation.usecase';
@@ -13,5 +13,12 @@ export class CustomerController {
   @ApiResponse({ status: 200, description: 'a customer was created' })
   createCustomer(@Body() data: CreateCustomerDto) {
     return this.customerCreationUseCase.execute(data);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Obtiene la lista de todos los clientes' })
+  @ApiResponse({ status: 200, description: 'OK' })
+  getAllCustomer() {
+    return this.customerCreationUseCase.getAll();
   }
 }

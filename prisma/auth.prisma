@@ -1,4 +1,4 @@
-model UserAuth {
+model auth {
   user_id  String @id @default(uuid()) @db.Uuid
   password String @db.VarChar(20)
 

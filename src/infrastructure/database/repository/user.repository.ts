@@ -10,7 +10,6 @@ export default class UserRepository
   implements Partial<IUserRepository>
 {
   constructor(protected prisma: PrismaService) {
-    console.log(prisma);
-    super(prisma?.User);
+    super(prisma?.user);
   }
 }

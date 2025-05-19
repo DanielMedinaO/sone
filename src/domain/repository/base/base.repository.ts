@@ -1,5 +1,5 @@
 export abstract class IBaseRepository<T> {
-  abstract create(doc: T): Promise<T>;
+  abstract create(doc: Partial<T>): Promise<T>;
   abstract delete(where: any | string): Promise<void>;
   abstract findAll(): Promise<T[]>;
   abstract findOneBy(options: object | object[]): Promise<T>;

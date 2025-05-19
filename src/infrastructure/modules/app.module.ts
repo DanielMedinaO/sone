@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import { CustomerController } from 'src/web/controllers/customer/customer.controller';
 import { HealthController } from 'src/web/controllers/health/health.controller';
 import { RepositoryModule } from './repository.module';
-import { PrismaModule } from './prisma.module';
+import { CustomerCreationUseCase } from 'src/application/use-case/customer/customer-creation.usecase';
 
 function getEnvFilePath(): string {
   const nodeEnv = process.env.NODE_ENV || 'dev';
@@ -19,8 +19,8 @@ function getEnvFilePath(): string {
       isGlobal: true,
     }),
     RepositoryModule,
-    PrismaModule,
   ],
+  providers: [CustomerCreationUseCase],
   controllers: [HealthController, CustomerController],
 })
 export class AppModule {}

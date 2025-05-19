@@ -9,7 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "cross-env NODE_ENV=dev nest start --watch",
+    "start:dev": "npx prisma generate && cross-env NODE_ENV=dev nest start --watch",
     "start:uat": "cross-env NODE_ENV=uat nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "cross-env NODE_ENV=prod node dist/src/main.js",
@@ -23,7 +23,7 @@
     "migrate:uat": "prisma migrate deploy --env-file .env.uat",
     "migrate:prod": "prisma migrate deploy --env-file .env.prod",
     "generate:prisma": "prisma generate",
-    "prisma:bootloader": "rimraf -rf prisma/migrations && rimraf -rf generated && npx prisma migrate reset && npx prisma db push",
+    "prisma:bootloader": "rimraf -rf prisma/migrations && npx prisma migrate reset && npx prisma generate && npx prisma db push",
     "prisma:start-migrations": "npx prisma migrate dev --name init",
     "ncu": "ncu -u -t minor"
   },

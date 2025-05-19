@@ -1,3 +1,2 @@
 import { User } from '../base/user.entity';
-
-export class Customer extends User {}
+export type Customer = User;

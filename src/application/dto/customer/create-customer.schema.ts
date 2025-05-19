@@ -29,7 +29,7 @@ export class CreateCustomerDto {
   surnames: string;
 
   @ApiProperty({
-    description: 'Fecha de cumpleaños',
+    description: 'Fecha de nacimiento',
     example: '1999-05-01T00:00:00Z',
   })
   @IsDateString()
@@ -49,4 +49,13 @@ export class CreateCustomerDto {
   })
   @IsString()
   phone: string;
+
+  @ApiProperty({
+    description: 'Contraseña',
+    example: 'password123',
+  })
+  @IsString()
+  @MinLength(4)
+  @MaxLength(20)
+  password: string;
 }
