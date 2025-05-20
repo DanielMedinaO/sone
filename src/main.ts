@@ -20,7 +20,7 @@ async function bootstrap() {
     .setVersion(version)
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger/api', app, documentFactory);
+  SwaggerModule.setup('api/swagger', app, documentFactory);
   // End Swagger config
   app.setGlobalPrefix('api');
   app.useGlobalPipes(
