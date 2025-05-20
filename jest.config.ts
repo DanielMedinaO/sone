@@ -9,12 +9,12 @@ const config: Config = {
     '^src/(.*)$': '<rootDir>/src/$1',
   },
   transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.json',
+      },
+    ],
   },
   collectCoverageFrom: ['src/**/*.ts'],
 };
