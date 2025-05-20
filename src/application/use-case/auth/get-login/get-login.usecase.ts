@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { GetLoginDto } from '../../../../../src/application/dto/auth/get-login.schema'; // TODO: Revisar rootDir para JEST (No funciona con src)
-import IUserAuthRepository from '../../../../../src/domain/repository/auth/user-auth.repository'; // TODO: Revisar rootDir para JEST (No funciona con src)
+import { GetLoginDto } from 'src/application/dto/auth/get-login.schema';
+import IUserAuthRepository from 'src/domain/repository/auth/user-auth.repository';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
