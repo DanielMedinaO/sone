@@ -6,5 +6,15 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  schemas  = ["auth", "people"]
+  schemas  = ["auth", "people", "company"]
+}
+
+model company {
+  status    Boolean
+  createdAt DateTime @db.Timestamp(6)
+  name      String   @db.VarChar(255)
+  id        String   @id(map: "PK_056f7854a7afdba7cbd6d45fc20") @db.Uuid
+
+  @@map("company") // Name table
+  @@schema("company") // Name schema
 }
